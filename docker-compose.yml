@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: friday
+      POSTGRES_PASSWORD: friday
+      POSTGRES_DB: friday
+    ports: ["55432:5432"]
+    volumes:
+      - friday-postgres:/var/lib/postgresql/data
+      - ./infrastructure/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U friday"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports: ["6379:6379"]
+    volumes: ["friday-redis:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  friday-postgres:
+  friday-redis:

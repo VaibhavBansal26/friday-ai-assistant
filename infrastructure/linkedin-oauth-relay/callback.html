@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" />
+    <title>Returning to Friday</title>
+    <style>body{margin:0;background:#071019;color:#d9fff7;font:16px system-ui;display:grid;place-items:center;min-height:100vh}main{max-width:520px;padding:32px;border:1px solid #245565;border-radius:18px;background:#0b1824}p{color:#8fc7c0}</style>
+  </head>
+  <body>
+    <main><h1>Returning to Friday…</h1><p>This authorization response is being handed back to the local desktop assistant.</p></main>
+    <script>
+      const allowed = new URLSearchParams(location.search);
+      const output = new URLSearchParams();
+      for (const key of ["code", "state", "error", "error_description"]) {
+        const value = allowed.get(key);
+        if (value) output.set(key, value);
+      }
+      location.replace(`http://127.0.0.1:8000/v1/oauth/linkedin/callback?${output}`);
+    </script>
+  </body>
+</html>

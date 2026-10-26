@@ -1,0 +1,2 @@
+/v1/oauth/linkedin/callback  /callback.html  200
+/v1/oauth/spotify/callback  /spotify.html  200

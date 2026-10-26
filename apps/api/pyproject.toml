@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "friday-api"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "uvicorn[standard]>=0.34,<1",
+  "langgraph>=0.4,<1",
+  "sqlalchemy[asyncio]>=2.0,<3",
+  "asyncpg>=0.30,<1",
+  "redis>=5.2,<7",
+  "openai>=1.68,<3",
+  "pillow>=11,<13",
+  "playwright>=1.55,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "pytest-asyncio>=0.24,<1", "httpx>=0.28,<1", "ruff>=0.11,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/friday"]

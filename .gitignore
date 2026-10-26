@@ -1,0 +1,34 @@
+# Publish only the Friday application from this mixed local workspace.
+/*
+!/.gitignore
+!/.env.example
+!/README.md
+!/LICENSE
+!/pyproject.toml
+!/docker-compose.yml
+!/apps/
+!/docs/
+!/infrastructure/
+
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+target/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+*.tsbuildinfo
+.DS_Store
+.netlify/
+
+# Private/local Friday state: credentials, OAuth tokens, user files, generated
+# media, browser profiles, cloned repositories, and memory stores.
+artifacts/
+credentials/
+uploads/
+chrome-profile/
+browser-evidence/
